@@ -1,20 +1,34 @@
+//This is the screen of your calculator where results and inputs are shown.
 const display = document.getElementById("display");
+//This is the button to toggle (show/hide) the calculator’s history.
 const historyBtn = document.getElementById("history-btn");
+//This is the area where the past calculations are displayed as a list.
 const historyList = document.getElementById("history-list");
+//This is the section containing the history list. It can be hidden or shown.
 const historySection = document.getElementById("history");
 
+//This holds the current number being typed (e.g., "123").
 let currentInput = "";
+
+//This stores the number that was entered before (e.g., when an operation is chosen, like "5 +").
 let previousInput = "";
+
+//This keeps track of the current operation (e.g., "+", "-", "*").
+
+//This keeps track of the current operation (e.g., "+", "-", "*").
 let operation = null;
+
+//An array to store past calculations (e.g., ["5 + 3 = 8", "10 * 2 = 20"]).
 let history = []; // Array to store history
 
 // Handle number buttons
 document.querySelectorAll(".number").forEach((button) => {
+  //Each number button has a "click" event attached.
   button.addEventListener("click", () => {
     if (currentInput === "" && operation) {
       // Start a new input after an operation is chosen
       display.textContent = `${previousInput} ${operation} `;
-    } 
+    }
 
     currentInput += button.dataset.value;
     display.textContent = currentInput;
@@ -26,7 +40,7 @@ document.querySelectorAll(".operation").forEach((button) => {
   button.addEventListener("click", () => {
     if (currentInput) {
       if (!previousInput) {
-        // Store the current input as the first operand
+        //When an operator is clicked, the current number (currentInput) becomes the first number (previousInput).
         previousInput = currentInput;
       } else if (operation) {
         // If there's already an operation, perform it immediately
@@ -41,7 +55,7 @@ document.querySelectorAll(".operation").forEach((button) => {
 
       // Update the operation and clear currentInput for the next number
       operation = button.dataset.value; // Set the new operation
-      display.textContent = `${previousInput} ${operation} `; // Show current expression
+      display.textContent = `${currentInput} ${operation}`; // Show current expression
       currentInput = "";
     } else if (previousInput) {
       // If there's no current input but previous input exists, update the operation

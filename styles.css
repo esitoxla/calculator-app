@@ -1,3 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Center the calculator vertically */
+    background-color: #fff; /* Add background color */
+}
+
 .calculator {
     width: 90%;
     max-width: 300px;
@@ -5,7 +15,8 @@
     margin: 50px auto;
     background-color: grey;
     border-radius: 10px;
-    box-shadow:0 4px 10px rgba(0, 0, 0, 0.2) ;
+    box-shadow:0 4px 10px rgba(0, 0, 0, 0.2);
+     box-sizing: border-box;
 }
 
 .display{
